@@ -20,3 +20,8 @@ func _on_StartGame_pressed():
 	$Back/AnimationPlayer.play("showGame")
 	get_parent().start_game()
 	pass # Replace with function body.
+
+
+func _on_TryAgain_pressed():
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
