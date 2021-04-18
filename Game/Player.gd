@@ -14,13 +14,16 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		$AnimatedSprite.animation = "stand"
+		$Steps.volume_db = -200
 	if event.is_action_released("ui_accept"):
 		$AnimatedSprite.animation = "walk"
+		$Steps.volume_db = -5
 
 func _physics_process(delta):
 	var moveVector = Vector2()
 	if !Input.is_action_pressed("ui_accept") and !dead:
 		moveVector.x = 8.0
+		
 	move_and_slide(moveVector)
 
 

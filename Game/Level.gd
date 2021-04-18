@@ -12,10 +12,12 @@ func _ready():
 
 
 func start_game():
+	$Ambience.play()
 	pass
 
 func lose_game():
 	$Front/Back/AnimationPlayer.play("showEnd")
+	$Ambience.stop()
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/relaxing-forest-ambience.ogg-665ef6381bed4067dd4d16b386ce68a8.oggstr"
+
+[deps]
+
+source_file="res://Sound/relaxing-forest-ambience.ogg"
+dest_files=[ "res://.import/relaxing-forest-ambience.ogg-665ef6381bed4067dd4d16b386ce68a8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
