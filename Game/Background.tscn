@@ -23,6 +23,7 @@ __meta__ = {
 }
 
 [node name="Far" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.4, 1 )
 motion_mirroring = Vector2( 592, 0 )
 
 [node name="parallax-demon-woods-bg" type="Sprite" parent="Far"]
@@ -30,7 +31,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Middle" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 1.2, 1 )
+motion_scale = Vector2( 0.65, 1 )
 motion_mirroring = Vector2( 592, 0 )
 
 [node name="parallax-demon-woods-bg" type="Sprite" parent="Middle"]
@@ -38,7 +39,6 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Close" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 2, 1 )
 motion_mirroring = Vector2( 592, 0 )
 
 [node name="parallax-demon-woods-bg" type="Sprite" parent="Close"]

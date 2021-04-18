@@ -8,6 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global_position.x = get_parent().get_player_pos().x + 4 + randi()%60
 	pass # Replace with function body.
 
 
@@ -16,7 +17,7 @@ func wait_for_stab():
 	pass
 
 func stab_finished():
-	global_position.x = get_parent().get_player_pos().x + 20 + randi()%200
+	global_position.x = get_parent().get_player_pos().x + 4 + randi()%200
 	$Animator.play("spawn")
 	pass
 
