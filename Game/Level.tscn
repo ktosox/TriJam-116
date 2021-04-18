@@ -2,22 +2,18 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Background.tscn" type="PackedScene" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 600, 10 )
+[ext_resource path="res://Enemies/Spike.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 0, 264.458 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource( 1 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 244.458, 222.049 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 73.4162, -81.4253 )
 current = true
+
+[node name="Spike" parent="." instance=ExtResource( 3 )]
+position = Vector2( 361.478, 356.061 )
