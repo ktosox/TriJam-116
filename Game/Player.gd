@@ -5,6 +5,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+export var move = 18.0
+
 var dead = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +24,7 @@ func _input(event):
 func _physics_process(delta):
 	var moveVector = Vector2()
 	if !Input.is_action_pressed("ui_accept") and !dead:
-		moveVector.x = 18.0
+		moveVector.x = move
 		
 	move_and_slide(moveVector)
 

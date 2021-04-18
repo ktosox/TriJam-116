@@ -9,6 +9,7 @@ func _ready():
 
 func start_game():
 	$TimerSpike.start(6)
+	$Player.move = 42.0
 	pass
 
 func get_player_pos():
@@ -28,5 +29,5 @@ func lose_game():
 func _on_TimerSpike_timeout():
 	$TimerSpike.wait_time +=8
 	var newSpike = spikeScene.instance()
-	add_child(newSpike)
+	add_child_below_node($Player,newSpike)
 	pass # Replace with function body.
