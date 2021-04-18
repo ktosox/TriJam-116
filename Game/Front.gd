@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -11,11 +11,12 @@ func _ready():
 	pass # Replace with function body.
 
 
-func start_game():
-	pass
-
-func lose_game():
-	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_StartGame_pressed():
+	$Back/AnimationPlayer.play("showGame")
+	get_parent().start_game()
+	pass # Replace with function body.
