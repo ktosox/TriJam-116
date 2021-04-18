@@ -22,7 +22,7 @@ func _input(event):
 func _physics_process(delta):
 	var moveVector = Vector2()
 	if !Input.is_action_pressed("ui_accept") and !dead:
-		moveVector.x = 8.0
+		moveVector.x = 18.0
 		
 	move_and_slide(moveVector)
 

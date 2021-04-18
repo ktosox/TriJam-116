@@ -183,15 +183,28 @@ script = ExtResource( 4 )
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 244.458, 222.049 )
+position = Vector2( 152, 240 )
 
 [node name="Spike" parent="." instance=ExtResource( 3 )]
-position = Vector2( 286.907, 248.822 )
+position = Vector2( 286.907, 240 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fore" type="Polygon2D" parent="CanvasLayer"]
+position = Vector2( 0, 16 )
+z_index = 1
+z_as_relative = false
+color = Color( 0.0862745, 0.188235, 0.235294, 1 )
+polygon = PoolVector2Array( 0, 272, 0, 464, 480, 464, 480, 272 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Front" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )
 
 [node name="Back" type="ColorRect" parent="Front"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0862745, 0.188235, 0.235294, 1 )
@@ -278,5 +291,10 @@ bus = "Ambience"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambience"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 8 )
+
+[node name="TimerSpike" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
 [connection signal="pressed" from="Front/Back/Welcome/StartGame" to="Front" method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Front/Back/EndScreen/TryAgain" to="Front" method="_on_TryAgain_pressed"]
+[connection signal="timeout" from="TimerSpike" to="." method="_on_TimerSpike_timeout"]

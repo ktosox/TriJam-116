@@ -1,10 +1,6 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var spikeScene = preload("res://Enemies/Spike.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +11,10 @@ func start_game():
 	$Ambience.play()
 	pass
 
+func get_player_pos():
+	return $Player.global_position
+	pass
+
 func lose_game():
 	$Front/Back/AnimationPlayer.play("showEnd")
 	$Ambience.stop()
@@ -22,3 +22,9 @@ func lose_game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_TimerSpike_timeout():
+	var newSpike = spikeScene.instance()
+	add_child(newSpike)
+	pass # Replace with function body.

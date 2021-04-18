@@ -11,11 +11,20 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func wait_for_stab():
+	$Timer.start(3+randi()%6)
+	pass
 
+func stab_finished():
+	global_position.x = get_parent().get_player_pos().x + 20 + randi()%200
+	$Animator.play("spawn")
+	pass
 
 func _on_Area2D_body_entered(body):
 	body.get_stabbed()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$Animator.play("stab")
 	pass # Replace with function body.
