@@ -30,7 +30,7 @@ func win_game():
 
 
 func _on_TimerSpike_timeout():
-	$TimerSpike.wait_time +=8
+	$TimerSpike.wait_time += 11
 	var newSpike = spikeScene.instance()
 	add_child_below_node($Player,newSpike)
 	pass # Replace with function body.

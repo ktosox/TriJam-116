@@ -109,6 +109,7 @@ width_curve = SubResource( 1 )
 default_color = Color( 0.996078, 0.996078, 0.996078, 1 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 6 )
 emitting = false
 lifetime = 3.0
 one_shot = true
