@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Background.tscn" type="PackedScene" id=2]
@@ -130,6 +130,70 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "showWin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WinScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("EndScreen:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Welcome:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="DynamicFont" id=1]
 size = 72
 outline_color = Color( 0, 0, 0, 1 )
@@ -231,6 +295,54 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 1.0, 1.0, 0.0 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 59.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "lose_game"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "New Anim (2)"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ 1.2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Front/Screen:material:shader_param/saturation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ 1.2 ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 30, 600 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 50, 600 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
@@ -360,6 +472,7 @@ autoplay = "showTitle"
 anims/showEnd = SubResource( 5 )
 anims/showGame = SubResource( 4 )
 anims/showTitle = SubResource( 7 )
+anims/showWin = SubResource( 16 )
 
 [node name="Welcome" type="Control" parent="Front/Back"]
 anchor_right = 1.0
@@ -396,6 +509,7 @@ autoplay = "Start"
 anims/Start = SubResource( 2 )
 
 [node name="EndScreen" type="Control" parent="Front/Back"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -426,6 +540,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="WinScreen" type="Control" parent="Front/Back"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -9.6
@@ -441,6 +559,27 @@ wait_time = 8.0
 
 [node name="Night" type="AnimationPlayer" parent="."]
 "anims/New Anim" = SubResource( 10 )
+"anims/New Anim (2)" = SubResource( 15 )
+
+[node name="nightArea" type="Area2D" parent="."]
+position = Vector2( 2280, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightArea"]
+position = Vector2( -552, 0 )
+shape = SubResource( 13 )
+
+[node name="win" type="Area2D" parent="."]
+position = Vector2( 3160, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
+position = Vector2( -32, 0 )
+shape = SubResource( 14 )
 [connection signal="pressed" from="Front/Back/Welcome/StartGame" to="Front" method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Front/Back/EndScreen/TryAgain" to="Front" method="_on_TryAgain_pressed"]
 [connection signal="timeout" from="TimerSpike" to="." method="_on_TimerSpike_timeout"]
+[connection signal="body_entered" from="nightArea" to="." method="_on_nightArea_body_entered"]
+[connection signal="body_entered" from="win" to="." method="_on_win_body_entered"]
