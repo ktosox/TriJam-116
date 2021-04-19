@@ -8,7 +8,7 @@
 [ext_resource path="res://Front.gd" type="Script" id=6]
 [ext_resource path="res://Sound/relaxing-forest-ambience.ogg" type="AudioStream" id=7]
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float brightness = 1.0;
@@ -25,13 +25,13 @@ void fragment() {
     COLOR.rgb = c;
 }"
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/brightness = 1.0
 shader_param/contrast = 1.0
 shader_param/saturation = 1.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "showEnd"
 length = 2.0
 tracks/0/type = "value"
@@ -57,6 +57,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WinScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -87,7 +99,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "showTitle"
 length = 0.1
 tracks/0/type = "value"
@@ -127,7 +139,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=6]
 resource_name = "showWin"
 length = 2.0
 tracks/0/type = "value"
@@ -191,18 +203,17 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 72
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 size = 48
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Start"
+[sub_resource type="Animation" id=9]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -229,15 +240,14 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 size = 90
 outline_size = 2
 outline_color = Color( 0.917647, 0.917647, 0.917647, 1 )
 extra_spacing_char = 3
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=8]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=11]
 length = 20.0
 loop = true
 tracks/0/type = "value"
@@ -265,8 +275,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0, -20.0, 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=12]
 length = 100.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
@@ -307,7 +316,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 resource_name = "New Anim (2)"
 length = 2.0
 tracks/0/type = "value"
@@ -335,7 +344,7 @@ tracks/1/keys = {
 "values": [ 1.2 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=14]
 resource_name = "reset"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
@@ -362,10 +371,10 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 30, 600 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 50, 600 )
 
 [node name="Level" type="Node2D"]
@@ -400,9 +409,9 @@ __meta__ = {
 }
 
 [node name="Press space7" type="Label" parent="."]
-margin_left = 2712.0
+margin_left = 2496.0
 margin_top = 24.0
-margin_right = 2968.0
+margin_right = 2852.0
 margin_bottom = 87.0
 custom_fonts/font = ExtResource( 3 )
 text = "just a couple more steps"
@@ -472,9 +481,9 @@ __meta__ = {
 }
 
 [node name="Press space8" type="Label" parent="."]
-margin_left = 1048.0
+margin_left = 1064.0
 margin_top = 336.0
-margin_right = 1478.0
+margin_right = 1494.0
 margin_bottom = 399.0
 custom_fonts/font = ExtResource( 3 )
 text = "just keep walking"
@@ -486,9 +495,9 @@ __meta__ = {
 }
 
 [node name="Press space6" type="Label" parent="."]
-margin_left = 1912.0
+margin_left = 1736.0
 margin_top = 320.0
-margin_right = 2464.0
+margin_right = 2288.0
 margin_bottom = 383.0
 custom_fonts/font = ExtResource( 3 )
 text = "you will be safe
@@ -504,7 +513,7 @@ __meta__ = {
 script = ExtResource( 6 )
 
 [node name="Screen" type="ColorRect" parent="Front"]
-material = SubResource( 12 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -512,6 +521,7 @@ __meta__ = {
 }
 
 [node name="Back" type="ColorRect" parent="Front"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0862745, 0.188235, 0.235294, 1 )
@@ -521,13 +531,13 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Front/Back"]
 autoplay = "showTitle"
-anims/showEnd = SubResource( 5 )
+anims/showEnd = SubResource( 3 )
 anims/showGame = SubResource( 4 )
-anims/showTitle = SubResource( 7 )
-anims/showWin = SubResource( 16 )
+anims/showTitle = SubResource( 5 )
+anims/showWin = SubResource( 6 )
 
 [node name="Welcome" type="Control" parent="Front/Back"]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -538,8 +548,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -186.0
-custom_fonts/font = SubResource( 1 )
-text = "Title name"
+custom_fonts/font = SubResource( 7 )
+text = "lost in the
+wrong forest"
 align = 1
 valign = 1
 __meta__ = {
@@ -551,7 +562,7 @@ margin_left = 138.593
 margin_top = 338.617
 margin_right = 338.593
 margin_bottom = 418.617
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "START"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -559,10 +570,9 @@ __meta__ = {
 
 [node name="Animator" type="AnimationPlayer" parent="Front/Back/Welcome"]
 autoplay = "Start"
-anims/Start = SubResource( 2 )
+anims/Start = SubResource( 9 )
 
 [node name="EndScreen" type="Control" parent="Front/Back"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -573,7 +583,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -186.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.984314, 0.552941, 0.552941, 1 )
 text = "you died"
 align = 1
@@ -587,7 +597,7 @@ margin_left = 138.593
 margin_top = 338.617
 margin_right = 338.593
 margin_bottom = 418.617
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "try again"
 __meta__ = {
 "_editor_description_": ""
@@ -595,8 +605,11 @@ __meta__ = {
 
 [node name="WinScreen" type="Control" parent="Front/Back"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Front/Back/WinScreen"]
 margin_left = 104.0
@@ -612,16 +625,16 @@ bus = "Ambience"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambience"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 8 )
+"anims/New Anim" = SubResource( 11 )
 
 [node name="TimerSpike" type="Timer" parent="."]
 wait_time = 8.0
 
 [node name="Night" type="AnimationPlayer" parent="."]
 autoplay = "reset"
-"anims/New Anim" = SubResource( 10 )
-"anims/New Anim (2)" = SubResource( 15 )
-anims/reset = SubResource( 17 )
+"anims/New Anim" = SubResource( 12 )
+"anims/New Anim (2)" = SubResource( 13 )
+anims/reset = SubResource( 14 )
 
 [node name="nightArea" type="Area2D" parent="."]
 position = Vector2( 1728, 8 )
@@ -630,16 +643,16 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nightArea"]
 position = Vector2( -128, 56 )
-shape = SubResource( 13 )
+shape = SubResource( 15 )
 
 [node name="win" type="Area2D" parent="."]
-position = Vector2( 3224, 0 )
+position = Vector2( 3000, 0 )
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
 position = Vector2( -32, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 [connection signal="pressed" from="Front/Back/Welcome/StartGame" to="Front" method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Front/Back/EndScreen/TryAgain" to="Front" method="_on_TryAgain_pressed"]
 [connection signal="timeout" from="TimerSpike" to="." method="_on_TimerSpike_timeout"]
