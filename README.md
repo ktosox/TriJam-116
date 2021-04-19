@@ -7,4 +7,4 @@ Something is looking for him. It's poking out of the ground, trying to catch him
 
 The theme was: "Stay there, don't move." My interpretation is that whenever the player presses space to stop the ranger, those are the exact thoughts that go through his mind.
 
-It’s not much, but I thnik it's enough for a game made in 170 minutes.
+It’s not much, but I think it's enough for a game made in 170 minutes.
