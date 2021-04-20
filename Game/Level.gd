@@ -2,6 +2,8 @@ extends Node2D
 
 var spikeScene = preload("res://Enemies/Spike.tscn")
 
+var wonGame = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,12 +19,15 @@ func get_player_pos():
 	pass
 
 func lose_game():
+	if wonGame :
+		return
 	$Front/Back/AnimationPlayer.play("showEnd")
 	$Ambience.stop()
 	$TimerSpike.stop()
 	pass
 
 func win_game():
+	wonGame = true
 	$Player.collision_layer = 0
 	$Front/Back/AnimationPlayer.play("showWin")
 	$Night.play("New Anim (2)")
@@ -30,7 +35,7 @@ func win_game():
 
 
 func _on_TimerSpike_timeout():
-	$TimerSpike.wait_time += 11
+	$TimerSpike.wait_time += 14
 	var newSpike = spikeScene.instance()
 	add_child_below_node($Player,newSpike)
 	pass # Replace with function body.

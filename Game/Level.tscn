@@ -247,11 +247,11 @@ outline_color = Color( 0.917647, 0.917647, 0.917647, 1 )
 extra_spacing_char = 3
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=11]
 size = 18
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 20.0
 loop = true
 tracks/0/type = "value"
@@ -279,7 +279,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0, -20.0, 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 100.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
@@ -320,8 +320,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "New Anim (2)"
+[sub_resource type="Animation" id=14]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
@@ -348,8 +347,7 @@ tracks/1/keys = {
 "values": [ 1.2 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "reset"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Front/Screen:material:shader_param/brightness")
 tracks/0/interp = 1
@@ -375,10 +373,10 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 30, 600 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 50, 600 )
 
 [node name="Level" type="Node2D"]
@@ -540,8 +538,6 @@ anims/showTitle = SubResource( 5 )
 anims/showWin = SubResource( 6 )
 
 [node name="Welcome" type="Control" parent="Front/Back"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -577,7 +573,6 @@ autoplay = "Start"
 anims/Start = SubResource( 9 )
 
 [node name="EndScreen" type="Control" parent="Front/Back"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -617,20 +612,24 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Front/Back/WinScreen"]
-margin_left = 104.0
-margin_top = 80.0
-margin_right = 366.0
-margin_bottom = 110.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -216.0
+margin_bottom = -87.0
 custom_fonts/font = ExtResource( 3 )
-text = "thanks for playing
+text = "you made it out alive!
+
+thanks for playing!
 "
+align = 1
 
 [node name="Label2" type="Label" parent="Front/Back/WinScreen"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -320.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 11 )
 text = "Credits:
 
 made under 3 hours by ktosox for trijam 116
@@ -652,16 +651,16 @@ bus = "Ambience"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ambience"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 11 )
+"anims/New Anim" = SubResource( 12 )
 
 [node name="TimerSpike" type="Timer" parent="."]
 wait_time = 8.0
 
 [node name="Night" type="AnimationPlayer" parent="."]
 autoplay = "reset"
-"anims/New Anim" = SubResource( 12 )
-"anims/New Anim (2)" = SubResource( 13 )
-anims/reset = SubResource( 14 )
+"anims/New Anim" = SubResource( 13 )
+"anims/New Anim (2)" = SubResource( 14 )
+anims/reset = SubResource( 15 )
 
 [node name="nightArea" type="Area2D" parent="."]
 position = Vector2( 1728, 8 )
@@ -670,7 +669,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nightArea"]
 position = Vector2( -128, 56 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 
 [node name="win" type="Area2D" parent="."]
 position = Vector2( 3000, 0 )
@@ -679,7 +678,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
 position = Vector2( -32, 0 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 [connection signal="pressed" from="Front/Back/Welcome/StartGame" to="Front" method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Front/Back/EndScreen/TryAgain" to="Front" method="_on_TryAgain_pressed"]
 [connection signal="timeout" from="TimerSpike" to="." method="_on_TimerSpike_timeout"]
